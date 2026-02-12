@@ -43,7 +43,7 @@ RE::BSString VerticalityCondition::GetCurrent(RE::TESObjectREFR *a_refr) const {
   if (!a_refr || !a_refr->IsPlayerRef())
     return "0";
 
-  auto *logic = ShadowsLogic::GetSingleton();
+  auto *logic = RaySenseLogic::GetSingleton();
   int idx = static_cast<int>(sensorIndexComponent->GetNumericValue(a_refr));
   float val = 0.0f;
   switch (idx) {
@@ -68,7 +68,7 @@ bool VerticalityCondition::EvaluateImpl(RE::TESObjectREFR *a_refr,
   if (!a_refr || !a_refr->IsPlayerRef())
     return false;
 
-  auto *logic = ShadowsLogic::GetSingleton();
+  auto *logic = RaySenseLogic::GetSingleton();
   int idx = static_cast<int>(sensorIndexComponent->GetNumericValue(a_refr));
   float currentVal = 0.0f;
   switch (idx) {
@@ -113,7 +113,7 @@ RE::BSString ObstacleCondition::GetCurrent(RE::TESObjectREFR *a_refr) const {
     return "0";
   return RE::BSString(
       std::to_string(
-          static_cast<int>(ShadowsLogic::GetSingleton()->GetObstacleDist()))
+          static_cast<int>(RaySenseLogic::GetSingleton()->GetObstacleDist()))
           .c_str());
 }
 
@@ -122,7 +122,7 @@ bool ObstacleCondition::EvaluateImpl(RE::TESObjectREFR *a_refr,
   if (!a_refr || !a_refr->IsPlayerRef())
     return false;
 
-  float currentDist = ShadowsLogic::GetSingleton()->GetObstacleDist();
+  float currentDist = RaySenseLogic::GetSingleton()->GetObstacleDist();
   // If 0, no obstacle detected. Should probably return false if looking for > 0
   if (currentDist <= 0.0f)
     return false;

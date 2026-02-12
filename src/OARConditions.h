@@ -1,7 +1,7 @@
 #pragma once
 
 #include "API/OpenAnimationReplacerAPI-Conditions.h"
-#include "ShadowsLogic.h"
+#include "RaySenseLogic.h"
 
 namespace OARConditions {
 using namespace OAR_API::Conditions;

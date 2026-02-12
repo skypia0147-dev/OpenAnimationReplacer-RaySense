@@ -1,6 +1,6 @@
 #include "Hooks.h"
 #include "OARConditions.h"
-#include "ShadowsLogic.h"
+#include "RaySenseLogic.h"
 #include <spdlog/sinks/basic_file_sink.h>
 
 using namespace std::literals;
@@ -58,7 +58,7 @@ SKSEPluginInfo(.Version = {1, 0, 0, 0},
       }
       break;
     case SKSE::MessagingInterface::kDataLoaded:
-      ShadowsLogic::GetSingleton()->Install();
+      RaySenseLogic::GetSingleton()->Install();
       Hooks::PlayerHook::Install();
       break;
     }

@@ -1,7 +1,6 @@
 #include "Hooks.h"
 #include "PCH.h"
-#include "ShadowsLogic.h"
-
+#include "RaySenseLogic.h"
 
 namespace Hooks {
 void PlayerHook::Install() {
@@ -23,13 +22,13 @@ void PlayerHook::Update(RE::PlayerCharacter *a_this, float a_delta) {
   reinterpret_cast<func_t>(_Update)(a_this, a_delta);
 
   // Run our logic
-  ShadowsLogic::GetSingleton()->OnUpdate(a_this, a_delta);
+  RaySenseLogic::GetSingleton()->OnUpdate(a_this, a_delta);
 }
 
 void PlayerHook::Jump(RE::PlayerCharacter *a_this) {
   // Run our logic BEFORE original Jump (ensuring Global is set before animation
   // event)
-  auto *logic = ShadowsLogic::GetSingleton();
+  auto *logic = RaySenseLogic::GetSingleton();
   logic->OnJump(a_this);
 
   // Call original
