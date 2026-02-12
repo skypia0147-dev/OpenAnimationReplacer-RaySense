@@ -1,5 +1,34 @@
 # Open Animation Replacer - RaySense
 
+An SKSE plugin for Open Animation Replacer (OAR) that provides vertical elevation and obstacle detection.
+
+## Overview
+This plugin utilizes a raycasting system to detect real-time terrain height variations and obstacles around the character. The detected data is exposed as custom conditions for OAR, enabling dynamic animation transitions based on terrain elevation or the presence of obstacles.
+
+## Key Features
+- **RaySense_Verticality**: Detects terrain height differences at the front, left, right, and the character's current position.
+- **RaySense_Obstacle**: Detects the distance to obstacles (walls, ledges, etc.) in front of the character.
+- **Global Variable 연동**: Calculated values are synchronized with Skyrim’s Global Variables, allowing them to be referenced by external scripts.
+
+## Requirements
+- Skyrim Special Edition / Anniversary Edition
+- [SKSE64](https://skse.silverlock.org/)
+- [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
+- [Open Animation Replacer](https://www.nexusmods.com/skyrimspecialedition/mods/92109)
+
+## Development Info
+- **Language**: C++23
+- **Library**: CommonLibSSE-NG
+- **Build System**: CMake, vcpkg
+
+## License
+The source code of this project is free to reference and modify.
+
+
+
+
+# Open Animation Replacer - RaySense
+
 Open Animation Replacer(OAR)를 위한 수직 고도 및 장애물 감지 SKSE 플러그인입니다.
 
 ## 개요
@@ -15,10 +44,6 @@ Open Animation Replacer(OAR)를 위한 수직 고도 및 장애물 감지 SKSE �
 - [SKSE64](https://skse.silverlock.org/)
 - [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
 - [Open Animation Replacer](https://www.nexusmods.com/skyrimspecialedition/mods/92109)
-
-## 설치 방법
-1. 모드 매니저(MO2, Vortex 등)를 통해 설치합니다.
-2. `OpenAnimationReplacer-RaySense.dll` 파일이 `Data/SKSE/Plugins/` 경로에 정상적으로 위치하는지 확인합니다.
 
 ## 개발 정보
 - **Language**: C++23
