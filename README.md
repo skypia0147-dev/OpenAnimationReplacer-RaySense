@@ -8,7 +8,7 @@ This plugin utilizes a raycasting system to detect real-time terrain height vari
 ## Key Features
 - **RaySense_Verticality**: Detects terrain height differences at the front, left, right, and the character's current position.
 - **RaySense_Obstacle**: Detects the distance to obstacles (walls, ledges, etc.) in front of the character.
-- **Global Variable 연동**: Calculated values are synchronized with Skyrim’s Global Variables, allowing them to be referenced by external scripts.
+- **Global Variable Integration**: Calculated values are synchronized with Skyrim’s Global Variables, allowing them to be referenced by external scripts.
 
 ## Requirements
 - Skyrim Special Edition / Anniversary Edition
