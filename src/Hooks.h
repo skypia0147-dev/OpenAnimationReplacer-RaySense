@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ShadowsLogic.h"
+#include "RaySenseLogic.h"
 
 namespace Hooks {
 class PlayerHook {

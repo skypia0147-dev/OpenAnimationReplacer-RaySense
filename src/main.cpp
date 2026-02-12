@@ -6,7 +6,7 @@
 using namespace std::literals;
 
 SKSEPluginInfo(.Version = {1, 0, 0, 0},
-               .Name = "Open Animation Replacer - RaySense", .Author = "sky__",
+               .Name = "Open Animation Replacer - RaySense", .Author = "Smooth",
                .RuntimeCompatibility =
                    SKSE::VersionIndependence::AddressLibrary)
 
