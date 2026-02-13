@@ -49,7 +49,8 @@ private:
   RE::TESGlobal *_verticalityRightGlobal{nullptr};
   RE::TESGlobal *_verticalityObstacleGlobal{nullptr};
   RE::TESGlobal *_verticalityPlayerGlobal{nullptr};
-  RE::NiPoint3 _lastPosition;
+  RE::NiPoint3 _lastUpdatePos;
+  float _lastUpdateAngle{0.0f};
   bool _initialized{false};
 
   // Internal storage for values
@@ -59,4 +60,8 @@ private:
   float _obstacleDist{0.0f};
   float _playerHeight{0.0f};
   std::uint32_t _frontObstacleType{0}; // kNone
+  // Helper for RayCasting to reduce duplication
+  bool PerformRayCast(RE::PlayerCharacter *a_player,
+                      const RE::NiPoint3 &a_start, const RE::NiPoint3 &a_end,
+                      RE::hkpWorldRayCastOutput &a_output);
 };
