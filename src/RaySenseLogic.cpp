@@ -88,6 +88,7 @@ void RaySenseLogic::OnUpdate(RE::PlayerCharacter *a_player, float a_delta) {
 
   // 1. Obstacle Detection
   _obstacleDist = UpdateObstacleDetection(a_player);
+  _frontObstacleType = UpdateFrontObstacleType(a_player);
 
   // 2. Player Height Above Ground (Always relative to player's current pos)
   _playerHeight = UpdateVerticality(_verticalityPlayerGlobal, a_player, pos,
@@ -183,6 +184,61 @@ float RaySenseLogic::UpdateObstacleDetection(RE::PlayerCharacter *a_player) {
   return finalDist;
 }
 
+std::uint32_t
+RaySenseLogic::UpdateFrontObstacleType(RE::PlayerCharacter *a_player) {
+  if (!a_player)
+    return 0;
+
+  RE::NiPoint3 pos = a_player->GetPosition();
+  RE::NiPoint3 forward(0, 1, 0);
+  if (auto root = a_player->Get3D()) {
+    auto &m = root->world.rotate;
+    forward = {m.entry[0][1], m.entry[1][1], m.entry[2][1]};
+  }
+
+  // Detect range: 250 units forward (slightly more than vault check)
+  float detectDistance = 250.0f;
+  RE::NiPoint3 rayStart = pos;
+  rayStart.z += 100.0f; // Eye/Chest height
+  RE::NiPoint3 rayEnd = rayStart + (forward * detectDistance);
+
+  float scale = RE::bhkWorld::GetWorldScale();
+  RE::hkpWorldRayCastInput rayInput;
+  rayInput.from = RE::hkVector4(rayStart.x * scale, rayStart.y * scale,
+                                rayStart.z * scale, 0.0f);
+  rayInput.to =
+      RE::hkVector4(rayEnd.x * scale, rayEnd.y * scale, rayEnd.z * scale, 0.0f);
+
+  std::uint32_t collisionFilter = 0;
+  a_player->GetCollisionFilterInfo(collisionFilter);
+  rayInput.filterInfo = collisionFilter;
+
+  // Perform Raycast
+  RE::hkpWorldRayCastOutput rayOutput;
+  auto *parentCell = a_player->GetParentCell();
+  if (parentCell) {
+    auto *bhkWorld_ = parentCell->GetbhkWorld();
+    if (bhkWorld_) {
+      auto *hkpWorld_ = bhkWorld_->GetWorld1();
+      if (hkpWorld_) {
+        hkpWorld_->CastRay(rayInput, rayOutput);
+        if (rayOutput.HasHit()) {
+          // Retrieve the object hit
+          auto *ref = RE::TESHavokUtilities::FindCollidableRef(
+              *rayOutput.rootCollidable);
+          if (ref) {
+            auto *base = ref->GetBaseObject();
+            if (base) {
+              return static_cast<std::uint32_t>(base->GetFormType());
+            }
+          }
+        }
+      }
+    }
+  }
+  return 0; // kNone
+}
+
 bool RaySenseLogic::IsObstacleDetected() const { return _obstacleDist > 0.0f; }
 
 float RaySenseLogic::UpdateVerticality(RE::TESGlobal *a_global,
@@ -213,7 +269,8 @@ float RaySenseLogic::UpdateVerticality(RE::TESGlobal *a_global,
   rayInput.filterInfo = collisionFilter;
 
   RE::hkpWorldRayCastOutput rayOutput;
-  float terrainHeight = a_pos.z;
+  // Initialize terrainHeight to return CAP_HEIGHT if no hit occurs
+  float terrainHeight = a_pos.z - CAP_HEIGHT;
 
   auto *parentCell = a_player->GetParentCell();
   if (parentCell) {
@@ -232,6 +289,9 @@ float RaySenseLogic::UpdateVerticality(RE::TESGlobal *a_global,
 
   float diff = std::round(a_pos.z - terrainHeight);
   if (diff > CAP_HEIGHT)
+    diff = CAP_HEIGHT;
+  else if (diff < 0.0f &&
+           !rayOutput.HasHit()) // Double check for "nothing hit" cases
     diff = CAP_HEIGHT;
 
   if (a_global) {

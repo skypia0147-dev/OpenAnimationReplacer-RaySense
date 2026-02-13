@@ -130,4 +130,43 @@ bool ObstacleCondition::EvaluateImpl(RE::TESObjectREFR *a_refr,
   return comparisonComponent->GetComparisonResult(
       currentDist, valueComponent->GetNumericValue(a_refr));
 }
+// --- ObstacleTypeCondition ---
+
+ObstacleTypeCondition::ObstacleTypeCondition() {
+  comparisonComponent =
+      static_cast<Conditions::IComparisonConditionComponent *>(AddBaseComponent(
+          Conditions::ConditionComponentType::kComparison, "Comparison"));
+  valueComponent =
+      static_cast<Conditions::INumericConditionComponent *>(AddBaseComponent(
+          Conditions::ConditionComponentType::kNumeric, "FormType ID"));
+}
+
+RE::BSString ObstacleTypeCondition::GetArgument() const {
+  return RE::BSString(std::format("ObstacleType {} {}",
+                                  comparisonComponent->GetArgument().c_str(),
+                                  valueComponent->GetArgument().c_str())
+                          .c_str());
+}
+
+RE::BSString
+ObstacleTypeCondition::GetCurrent(RE::TESObjectREFR *a_refr) const {
+  if (!a_refr || !a_refr->IsPlayerRef())
+    return "0";
+  return RE::BSString(
+      std::to_string(static_cast<int>(
+                         RaySenseLogic::GetSingleton()->GetFrontObstacleType()))
+          .c_str());
+}
+
+bool ObstacleTypeCondition::EvaluateImpl(RE::TESObjectREFR *a_refr,
+                                         RE::hkbClipGenerator *, void *) const {
+  if (!a_refr || !a_refr->IsPlayerRef())
+    return false;
+
+  std::uint32_t currentType =
+      RaySenseLogic::GetSingleton()->GetFrontObstacleType();
+
+  return comparisonComponent->GetComparisonResult(
+      static_cast<float>(currentType), valueComponent->GetNumericValue(a_refr));
+}
 } // namespace OARConditions

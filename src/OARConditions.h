@@ -63,4 +63,32 @@ protected:
   Conditions::IComparisonConditionComponent *comparisonComponent;
   Conditions::INumericConditionComponent *valueComponent;
 };
+
+// Condition to check front obstacle FormType
+class ObstacleTypeCondition : public Conditions::CustomCondition {
+public:
+  constexpr static inline std::string_view CONDITION_NAME =
+      "RaySense_ObstacleType"sv;
+
+  ObstacleTypeCondition();
+
+  RE::BSString GetName() const override { return CONDITION_NAME.data(); }
+  RE::BSString GetDescription() const override {
+    return "Checks the FormType of the object in front of the player."sv.data();
+  }
+  constexpr REL::Version GetRequiredVersion() const override {
+    return {1, 0, 0};
+  }
+
+  RE::BSString GetArgument() const override;
+  RE::BSString GetCurrent(RE::TESObjectREFR *a_refr) const override;
+
+protected:
+  bool EvaluateImpl(RE::TESObjectREFR *a_refr,
+                    RE::hkbClipGenerator *a_clipGenerator,
+                    void *a_subMod) const override;
+
+  Conditions::IComparisonConditionComponent *comparisonComponent;
+  Conditions::INumericConditionComponent *valueComponent;
+};
 } // namespace OARConditions
