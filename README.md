@@ -80,6 +80,19 @@ When using `RaySense_Verticality Platform == [Value]`, you can detect moving obj
 This plugin is heavily optimized by a Senior SKSE developer. It employs internal `std::atomic` caches and early exits (such as skipping operations during swimming, mounting, or killmoves) to minimize Havok polling. Feel free to use these conditions liberally in your OAR setups.
 
 ---
+## Requirements
+
+- **[SKSE64](https://skse.silverlock.org/)**
+- **[Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)**
+- **[Open Animation Replacer (OAR)](https://www.nexusmods.com/skyrimspecialedition/mods/92109)** (Version 2.3.6+ or 3.0+ Recommended)
+
+## Credits
+
+- **Smooth**: Author & Creator of RaySense.
+- **Ershin**: For the incredible Open Animation Replacer (OAR) and its extensible C++ API.
+- **doodlum**: For the `GetSubmergedLevel` native engine code reference from `Wade in Water`, crucial for the accurate water detection logic.
+
+---
 
 # 한국어 설명서 (Korean)
 
@@ -126,3 +139,16 @@ This plugin is heavily optimized by a Senior SKSE developer. It employs internal
 - `0` : None (일반 바닥, 고정된 지형)
 - `1` : Moving Platform (움직이는 발판, 엘리베이터 형태의 구조물)
 - `2` : Actor (드래곤, 거인 등 다른 액터 위에 밟고 서 있는 상태)
+
+---
+## 선행 모드 (Requirements)
+
+- **[SKSE64](https://skse.silverlock.org/)**
+- **[Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)**
+- **[Open Animation Replacer (OAR)](https://www.nexusmods.com/skyrimspecialedition/mods/92109)**
+
+## 크레딧 (Credits)
+
+- **Smooth**: 플러그인 제작 및 로직 설계
+- **Ershin**: Open Animation Replacer (OAR) 원작자 및 조건식 API 제공
+- **doodlum**: 정확한 수위 판정에 큰 도움이 된 `Wade in Water` 플러그인의 네이티브 엔진 코드 레퍼런스 제공
