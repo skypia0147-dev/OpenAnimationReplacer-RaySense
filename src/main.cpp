@@ -52,19 +52,55 @@ SKSEPluginInfo(.Version = {1, 0, 0, 0},
           OAR_API::Conditions::APIResult::OK) {
         SKSE::log::info("RaySenseVerticality: Registered OAR Condition "
                         "'RaySense_Obstacle'");
-      } else {
-        SKSE::log::error("RaySenseVerticality: Failed to register OAR "
-                         "Condition 'RaySense_Obstacle'");
+      }
+      if (OAR_API::Conditions::AddCustomCondition<
+              OARConditions::WallFrontCondition>() ==
+          OAR_API::Conditions::APIResult::OK) {
+        SKSE::log::info("RaySenseVerticality: Registered OAR Condition "
+                        "'RaySense_Wall_Front'");
+      }
+      if (OAR_API::Conditions::AddCustomCondition<
+              OARConditions::WallFrontLCondition>() ==
+          OAR_API::Conditions::APIResult::OK) {
+        SKSE::log::info("RaySenseVerticality: Registered OAR Condition "
+                        "'RaySense_Wall_Front_L'");
+      }
+      if (OAR_API::Conditions::AddCustomCondition<
+              OARConditions::WallFrontRCondition>() ==
+          OAR_API::Conditions::APIResult::OK) {
+        SKSE::log::info("RaySenseVerticality: Registered OAR Condition "
+                        "'RaySense_Wall_Front_R'");
+      }
+      if (OAR_API::Conditions::AddCustomCondition<
+              OARConditions::WallLeftCondition>() ==
+          OAR_API::Conditions::APIResult::OK) {
+        SKSE::log::info("RaySenseVerticality: Registered OAR Condition "
+                        "'RaySense_Wall_Left'");
+      }
+      if (OAR_API::Conditions::AddCustomCondition<
+              OARConditions::WallRightCondition>() ==
+          OAR_API::Conditions::APIResult::OK) {
+        SKSE::log::info("RaySenseVerticality: Registered OAR Condition "
+                        "'RaySense_Wall_Right'");
       }
 
       if (OAR_API::Conditions::AddCustomCondition<
-              OARConditions::ObstacleTypeCondition>() ==
+              OARConditions::ObstacleTypeFrontCondition>() ==
           OAR_API::Conditions::APIResult::OK) {
         SKSE::log::info("RaySenseVerticality: Registered OAR Condition "
-                        "'RaySense_ObstacleType'");
-      } else {
-        SKSE::log::error("RaySenseVerticality: Failed to register OAR "
-                         "Condition 'RaySense_ObstacleType'");
+                        "'Obstacle_Type_Front'");
+      }
+      if (OAR_API::Conditions::AddCustomCondition<
+              OARConditions::ObstacleTypeLeftCondition>() ==
+          OAR_API::Conditions::APIResult::OK) {
+        SKSE::log::info("RaySenseVerticality: Registered OAR Condition "
+                        "'Obstacle_Type_Left'");
+      }
+      if (OAR_API::Conditions::AddCustomCondition<
+              OARConditions::ObstacleTypeRightCondition>() ==
+          OAR_API::Conditions::APIResult::OK) {
+        SKSE::log::info("RaySenseVerticality: Registered OAR Condition "
+                        "'Obstacle_Type_Right'");
       }
       break;
     case SKSE::MessagingInterface::kDataLoaded:

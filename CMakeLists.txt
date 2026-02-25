@@ -27,7 +27,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 # Post-build
-set(TEST_PLUGINS_DIR "f:/TuLED/File Mod Skyrim SE/overwrite/SKSE/Plugins")
+set(TEST_PLUGINS_DIR "H:/Game/Lorerim/overwrite/skse/plugins")
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory "${TEST_PLUGINS_DIR}"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_FILE:${PROJECT_NAME}>" "${TEST_PLUGINS_DIR}/$<TARGET_FILE_NAME:${PROJECT_NAME}>"

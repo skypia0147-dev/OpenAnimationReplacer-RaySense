@@ -29,14 +29,21 @@ void PlayerHook::Jump(RE::PlayerCharacter *a_this) {
   // Run our logic BEFORE original Jump (ensuring Global is set before animation
   // event)
   auto *logic = RaySenseLogic::GetSingleton();
-  logic->OnJump(a_this);
+
+  // Quick safety check
+  if (a_this && a_this->Is3DLoaded() && !a_this->IsDead()) {
+    if (auto *state = a_this->AsActorState();
+        !(a_this->IsOnMount() || (state && state->IsSwimming()))) {
+      logic->OnJump(a_this);
+    }
+  }
 
   // Call original
   using func_t = void (*)(RE::PlayerCharacter *);
   reinterpret_cast<func_t>(_Jump)(a_this);
 
   // Apply jump bonus if obstacle detected
-  if (logic->IsObstacleDetected()) {
+  if (a_this && a_this->Is3DLoaded() && logic->IsObstacleDetected()) {
     if (auto *ctrl = a_this->GetCharController()) {
       RE::hkVector4 currentVel;
       ctrl->GetLinearVelocityImpl(currentVel);

@@ -64,30 +64,186 @@ protected:
   Conditions::INumericConditionComponent *valueComponent;
 };
 
-// Condition to check front obstacle FormType
-class ObstacleTypeCondition : public Conditions::CustomCondition {
+// Condition to check FRONT wall distance
+class WallFrontCondition : public Conditions::CustomCondition {
 public:
   constexpr static inline std::string_view CONDITION_NAME =
-      "RaySense_ObstacleType"sv;
-
-  ObstacleTypeCondition();
-
+      "RaySense_Wall_Front"sv;
+  WallFrontCondition();
   RE::BSString GetName() const override { return CONDITION_NAME.data(); }
   RE::BSString GetDescription() const override {
-    return "Checks the FormType of the object in front of the player."sv.data();
+    return "Checks distance to the wall in front."sv.data();
   }
   constexpr REL::Version GetRequiredVersion() const override {
     return {1, 0, 0};
   }
-
   RE::BSString GetArgument() const override;
   RE::BSString GetCurrent(RE::TESObjectREFR *a_refr) const override;
 
 protected:
-  bool EvaluateImpl(RE::TESObjectREFR *a_refr,
-                    RE::hkbClipGenerator *a_clipGenerator,
-                    void *a_subMod) const override;
+  bool EvaluateImpl(RE::TESObjectREFR *a_refr, RE::hkbClipGenerator *a_cg,
+                    void *a_sm) const override;
+  Conditions::IComparisonConditionComponent *comparisonComponent;
+  Conditions::INumericConditionComponent *valueComponent;
+};
 
+// Condition to check FRONT LEFT wall distance
+class WallFrontLCondition : public Conditions::CustomCondition {
+public:
+  constexpr static inline std::string_view CONDITION_NAME =
+      "RaySense_Wall_Front_L"sv;
+  WallFrontLCondition();
+  RE::BSString GetName() const override { return CONDITION_NAME.data(); }
+  RE::BSString GetDescription() const override {
+    return "Checks distance to the wall on the front-left."sv.data();
+  }
+  constexpr REL::Version GetRequiredVersion() const override {
+    return {1, 0, 0};
+  }
+  RE::BSString GetArgument() const override;
+  RE::BSString GetCurrent(RE::TESObjectREFR *a_refr) const override;
+
+protected:
+  bool EvaluateImpl(RE::TESObjectREFR *a_refr, RE::hkbClipGenerator *a_cg,
+                    void *a_sm) const override;
+  Conditions::IComparisonConditionComponent *comparisonComponent;
+  Conditions::INumericConditionComponent *valueComponent;
+};
+
+// Condition to check FRONT RIGHT wall distance
+class WallFrontRCondition : public Conditions::CustomCondition {
+public:
+  constexpr static inline std::string_view CONDITION_NAME =
+      "RaySense_Wall_Front_R"sv;
+  WallFrontRCondition();
+  RE::BSString GetName() const override { return CONDITION_NAME.data(); }
+  RE::BSString GetDescription() const override {
+    return "Checks distance to the wall on the front-right."sv.data();
+  }
+  constexpr REL::Version GetRequiredVersion() const override {
+    return {1, 0, 0};
+  }
+  RE::BSString GetArgument() const override;
+  RE::BSString GetCurrent(RE::TESObjectREFR *a_refr) const override;
+
+protected:
+  bool EvaluateImpl(RE::TESObjectREFR *a_refr, RE::hkbClipGenerator *a_cg,
+                    void *a_sm) const override;
+  Conditions::IComparisonConditionComponent *comparisonComponent;
+  Conditions::INumericConditionComponent *valueComponent;
+};
+
+// Condition to check LEFT wall distance
+class WallLeftCondition : public Conditions::CustomCondition {
+public:
+  constexpr static inline std::string_view CONDITION_NAME =
+      "RaySense_Wall_Left"sv;
+  WallLeftCondition();
+  RE::BSString GetName() const override { return CONDITION_NAME.data(); }
+  RE::BSString GetDescription() const override {
+    return "Checks distance to the wall on the left."sv.data();
+  }
+  constexpr REL::Version GetRequiredVersion() const override {
+    return {1, 0, 0};
+  }
+  RE::BSString GetArgument() const override;
+  RE::BSString GetCurrent(RE::TESObjectREFR *a_refr) const override;
+
+protected:
+  bool EvaluateImpl(RE::TESObjectREFR *a_refr, RE::hkbClipGenerator *a_cg,
+                    void *a_sm) const override;
+  Conditions::IComparisonConditionComponent *comparisonComponent;
+  Conditions::INumericConditionComponent *valueComponent;
+};
+
+// Condition to check RIGHT wall distance
+class WallRightCondition : public Conditions::CustomCondition {
+public:
+  constexpr static inline std::string_view CONDITION_NAME =
+      "RaySense_Wall_Right"sv;
+  WallRightCondition();
+  RE::BSString GetName() const override { return CONDITION_NAME.data(); }
+  RE::BSString GetDescription() const override {
+    return "Checks distance to the wall on the right."sv.data();
+  }
+  constexpr REL::Version GetRequiredVersion() const override {
+    return {1, 0, 0};
+  }
+  RE::BSString GetArgument() const override;
+  RE::BSString GetCurrent(RE::TESObjectREFR *a_refr) const override;
+
+protected:
+  bool EvaluateImpl(RE::TESObjectREFR *a_refr, RE::hkbClipGenerator *a_cg,
+                    void *a_sm) const override;
+  Conditions::IComparisonConditionComponent *comparisonComponent;
+  Conditions::INumericConditionComponent *valueComponent;
+};
+
+// Condition to check FRONT obstacle FormType
+class ObstacleTypeFrontCondition : public Conditions::CustomCondition {
+public:
+  constexpr static inline std::string_view CONDITION_NAME =
+      "Obstacle_Type_Front"sv;
+  ObstacleTypeFrontCondition();
+  RE::BSString GetName() const override { return CONDITION_NAME.data(); }
+  RE::BSString GetDescription() const override {
+    return "Checks FormType of front obstacle."sv.data();
+  }
+  constexpr REL::Version GetRequiredVersion() const override {
+    return {1, 0, 0};
+  }
+  RE::BSString GetArgument() const override;
+  RE::BSString GetCurrent(RE::TESObjectREFR *a_refr) const override;
+
+protected:
+  bool EvaluateImpl(RE::TESObjectREFR *a_refr, RE::hkbClipGenerator *a_cg,
+                    void *a_sm) const override;
+  Conditions::IComparisonConditionComponent *comparisonComponent;
+  Conditions::INumericConditionComponent *valueComponent;
+};
+
+// Condition to check LEFT obstacle FormType
+class ObstacleTypeLeftCondition : public Conditions::CustomCondition {
+public:
+  constexpr static inline std::string_view CONDITION_NAME =
+      "Obstacle_Type_Left"sv;
+  ObstacleTypeLeftCondition();
+  RE::BSString GetName() const override { return CONDITION_NAME.data(); }
+  RE::BSString GetDescription() const override {
+    return "Checks FormType of left obstacle."sv.data();
+  }
+  constexpr REL::Version GetRequiredVersion() const override {
+    return {1, 0, 0};
+  }
+  RE::BSString GetArgument() const override;
+  RE::BSString GetCurrent(RE::TESObjectREFR *a_refr) const override;
+
+protected:
+  bool EvaluateImpl(RE::TESObjectREFR *a_refr, RE::hkbClipGenerator *a_cg,
+                    void *a_sm) const override;
+  Conditions::IComparisonConditionComponent *comparisonComponent;
+  Conditions::INumericConditionComponent *valueComponent;
+};
+
+// Condition to check RIGHT obstacle FormType
+class ObstacleTypeRightCondition : public Conditions::CustomCondition {
+public:
+  constexpr static inline std::string_view CONDITION_NAME =
+      "Obstacle_Type_Right"sv;
+  ObstacleTypeRightCondition();
+  RE::BSString GetName() const override { return CONDITION_NAME.data(); }
+  RE::BSString GetDescription() const override {
+    return "Checks FormType of right obstacle."sv.data();
+  }
+  constexpr REL::Version GetRequiredVersion() const override {
+    return {1, 0, 0};
+  }
+  RE::BSString GetArgument() const override;
+  RE::BSString GetCurrent(RE::TESObjectREFR *a_refr) const override;
+
+protected:
+  bool EvaluateImpl(RE::TESObjectREFR *a_refr, RE::hkbClipGenerator *a_cg,
+                    void *a_sm) const override;
   Conditions::IComparisonConditionComponent *comparisonComponent;
   Conditions::INumericConditionComponent *valueComponent;
 };
