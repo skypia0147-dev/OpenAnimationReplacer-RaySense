@@ -88,9 +88,8 @@ This plugin is heavily optimized by a Senior SKSE developer. It employs internal
 
 ## Credits
 
-- **Smooth**: Author & Creator of RaySense.
 - **Ershin**: For the incredible Open Animation Replacer (OAR) and its extensible C++ API.
-- **doodlum**: For the `GetSubmergedLevel` native engine code reference from `Wade in Water`, crucial for the accurate water detection logic.
+- **doodlum**: For the native water detection (`GetSubmergedLevel`) inspiration from their work on `Wade in Water`.
 
 ---
 
@@ -149,6 +148,5 @@ This plugin is heavily optimized by a Senior SKSE developer. It employs internal
 
 ## 크레딧 (Credits)
 
-- **Smooth**: 플러그인 제작 및 로직 설계
 - **Ershin**: Open Animation Replacer (OAR) 원작자 및 조건식 API 제공
-- **doodlum**: 정확한 수위 판정에 큰 도움이 된 `Wade in Water` 플러그인의 네이티브 엔진 코드 레퍼런스 제공
+- **doodlum**: 네이티브 엔진 기능(`GetSubmergedLevel`)을 활용한 정확한 수위 판정 로직에 영감을 준 `Wade in Water` 플러그인의 원작자
