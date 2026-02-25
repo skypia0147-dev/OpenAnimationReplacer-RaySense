@@ -2,15 +2,6 @@
 
 **RaySense** is an advanced SKSE plugin designed to extend the capabilities of the Open Animation Replacer (OAR). It utilizes real-time Havok raycasting to detect the player's surrounding verticality (terrain elevation), obstacles, and floor surface types with extreme precision. It then exposes these calculations directly to OAR as highly efficient custom conditions.
 
-## Key Features
-
-- **Spatial Verticality Detection**: Automatically calculates the height difference between the player and the terrain directly in front, to the left, and to the right of the character up to 80 units away. 
-- **Obstacle & Vaulting Sensing**: Casts horizontal rays from the player's knee and chest height to detect scalable obstacles (walls, fences, rocks) in real time. Perfect for creating jumping, climbing, or vaulting animation replacers.
-- **Smart Surface Type Recognition**: Replaces generic ground conditions by injecting specific Material IDs (Grass, Snow, Stone, Dirt, Sand, Gravel) and collision layers.
-- **Native Submerged Level System**: Implements native engine calls (`GetSubmergedLevel`) to flawlessly detect when the player wades into water, even if it's a shallow puddle or a floating ice chunk.
-- **Micro-movement Caching**: Built with a "Smart Caching" system that completely bypasses heavy physics raycasts if the player is standing still, ensuring **zero FPS drop** in standard gameplay.
-- **Havok Thread Safe**: Fully synchronized with Skyrim's physics engine lock (`BSReadLockGuard`) to prevent CTDs during heavy simulation scenes or teleportation.
-
 ---
 
 ## OAR Custom Conditions Reference
@@ -96,12 +87,6 @@ This plugin is heavily optimized by a Senior SKSE developer. It employs internal
 # 한국어 설명서 (Korean)
 
 **RaySense**는 실시간 Havok 물리 레이캐스트를 활용하여 플레이어 주변의 지형 고저차(Verticality), 장애물, 바닥 재질을 극히 정밀하게 감지하고 이를 OAR 조건식으로 사용할 수 있게 해주는 고도의 SKSE 플러그인입니다.
-
-## 주요 기능
-- **지형 고저차 감지**: 플레이어 전방, 좌, 우 스텝 위치의 실제 지형 높이 차이를 계산하여 오르막/내리막/계단 전용 모션을 구동할 수 있습니다.
-- **장애물 및 파쿠르 인식**: 가슴 높이는 뚫려있고 무릎 높이는 막혀있는 '넘어갈 수 있는(Vaultable)' 장애물까지의 거리를 반환합니다. 파쿠르 및 점프 모션 제작에 필수적입니다.
-- **스마트 재질 인식**: 눈, 풀, 얼음, 돌 모양에 따른 바닥 재질을 감지하며, 특히 얕은 물웅덩이나 발목 높이 이상의 물을 엔진 네이티브(`GetSubmergedLevel`)로 파악해 완벽한 물보라 모션 전환이 가능합니다.
-- **극강의 프레임(FPS) 방어**: 제자리에 서 있을 때 물리 연산을 즉시 생략하는 마이크로 캐싱이 도입되어 있어 모드 설치로 인한 프레임 드랍이 전혀 없습니다. 멀티스레드 락(Lock) 동기화로 CTD 또한 원천 차단됩니다.
 
 ## OAR 조건식 설명 (간단 요약)
 
