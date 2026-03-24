@@ -87,7 +87,7 @@ When using `Index 4 (SurfaceType)`, use these values:
 
 - **[SKSE64](https://skse.silverlock.org/)**
 - **[Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)**
-- **[Open Animation Replacer (OAR)](https://www.nexusmods.com/skyrimspecialedition/mods/92109)** (Version 2.3.6+ or 3.0+ Recommended)
+- **[Open Animation Replacer (OAR)](https://www.nexusmods.com/skyrimspecialedition/mods/92109)** (Version 3.0.2+ Required)
 
 ---
 
@@ -200,7 +200,7 @@ OAR UI 및 `config.json`에서 아래 컨디션들을 사용할 수 있습니다
 
 - **[SKSE64](https://skse.silverlock.org/)**
 - **[Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)**
-- **[Open Animation Replacer (OAR)](https://www.nexusmods.com/skyrimspecialedition/mods/92109)** (2.3.6+ 또는 3.0+ 권장)
+- **[Open Animation Replacer (OAR)](https://www.nexusmods.com/skyrimspecialedition/mods/92109)** (3.0.2+ 필수)
 
 ---
 
