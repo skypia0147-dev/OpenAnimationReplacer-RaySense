@@ -1,0 +1,16 @@
+CompileFlags:
+  Add:
+    - "-I"
+    - "F:/Anti/RaySense/src"
+    - "-I"
+    - "F:/Anti/RaySense/build/_deps/commonlibsse-src/include"
+    - "-I"
+    - "F:/Anti/RaySense/vcpkg_installed/x64-windows-static/include"
+    - "-std=c++23"
+    - "-include"
+    - "F:/Anti/RaySense/src/PCH.h"
+    - "-DUNICODE"
+    - "-D_UNICODE"
+    - "-DNDEBUG"
+    - "-Wno-invalid-token-paste"
+  CompilationDatabase: "build"

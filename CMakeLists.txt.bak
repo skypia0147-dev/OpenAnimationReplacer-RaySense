@@ -1,0 +1,36 @@
+cmake_minimum_required(VERSION 3.20)
+
+project(SkyrimSE_Plugin_Project)
+
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "" FORCE)
+# Force MSVC to use static runtime (/MT) instead of dynamic (/MD)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "f:/TuLED/File Mod Skyrim SE/overwrite/SKSE/Plugins")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "f:/TuLED/File Mod Skyrim SE/overwrite/SKSE/Plugins")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "f:/TuLED/File Mod Skyrim SE/overwrite/SKSE/Plugins")
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "f:/TuLED/File Mod Skyrim SE/overwrite/SKSE/Plugins")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "f:/TuLED/File Mod Skyrim SE/overwrite/SKSE/Plugins")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "f:/TuLED/File Mod Skyrim SE/overwrite/SKSE/Plugins")
+
+find_package(CommonLibSSE CONFIG REQUIRED)
+
+add_library(${PROJECT_NAME} SHARED
+    "src/main.cpp"
+    "src/PCH.h"
+    "src/ShadowsLogic.cpp"
+)
+
+target_precompile_headers(${PROJECT_NAME} PRIVATE src/PCH.h)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE CommonLibSSE::CommonLibSSE)
+
+# SKSE Plugin info
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    SKSE_PLUGIN_NAME="MyFirstPlugin"
+    SKSE_PLUGIN_VERSION=1
+)

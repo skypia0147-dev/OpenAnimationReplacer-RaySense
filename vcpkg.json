@@ -1,0 +1,14 @@
+{
+  "name": "oar-raysense",
+  "version-string": "0.1.0",
+  "dependencies": [
+    "spdlog",
+    "fmt",
+    "rapidcsv",
+    "simpleini",
+    {
+      "name": "imgui",
+      "features": ["dx11-binding"]
+    }
+  ]
+}
