@@ -115,6 +115,10 @@ RaySense can be customized via `OpenAnimationReplacer-RaySense.ini`.
 
 # 한국어 설명서 (Korean)
 
+**RaySense**는 Open Animation Replacer (OAR)의 기능을 확장하기 위해 설계된 고급 SKSE 플러그인입니다. 실시간 Havok 레이캐스팅을 활용하여 지형의 고도, 경사, 장애물 및 표면 재질을 감지합니다.
+
+---
+
 UI 최적화를 위해 수십 개의 컨디션을 4가지 핵심 카테고리로 통합했습니다.
 
 ---
@@ -134,6 +138,12 @@ UI 최적화를 위해 수십 개의 컨디션을 4가지 핵심 카테고리로
 
 ### 4. 스마트 캐싱 (최적화)
 - 플레이어가 정지해 있을 때 불필요한 연산을 중단하여 성능 부하를 최소화합니다.
+
+---
+
+## OAR 커스텀 컨디션 참조 (OAR Custom Conditions Reference)
+
+OAR UI 및 `config.json`에서 아래 컨디션들을 사용할 수 있습니다.
 
 ### 1. RaySense_Verticality (지형 고도)
 - `Index 0: 전방 / Index 1: 좌측 / Index 2: 우측` **(체공 중에는 착지 지점 예측)**
@@ -169,6 +179,20 @@ UI 최적화를 위해 수십 개의 컨디션을 4가지 핵심 카테고리로
 
 ### 플랫폼 종류 (Platform) 번호 (Index 5)
 - `0`: 없음 (일반 지형) / `1`: 움직이는 발판 / `2`: 액터 (다른 NPC/크리처 위)
+
+---
+
+## TESGlobal 변수 (TESGlobal Variables)
+
+| EditorID | 설명 |
+| :--- | :--- |
+| `RaySense_SurfaceSlope` | 현재 서 있는 지면의 각도 |
+| `RaySense_MacroSlope_Front` / `_Left` / `_Right` | 전방 및 좌우 거시 지형 경사도 |
+| `Verticality_Front` / `_Left` / `_Right` | 전방 및 좌우 고도 차이 |
+| `RaySense_Wall_Front` / `_Left` / `_Right` | 전방 및 좌우 벽까지의 거리 |
+| `RaySense_SurfaceType` / `_PlatformType` | 지면 재질 및 플랫폼 유형 |
+| `Obstacle_Type_Front` / `_Left` / `_Right` | 전방 및 좌우 장애물의 FormType ID |
+| `Verticality_Obstacle` | 볼팅(Vault) 가능 거리 |
 
 ---
 
