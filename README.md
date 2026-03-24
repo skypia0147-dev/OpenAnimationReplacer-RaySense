@@ -102,8 +102,8 @@ RaySense can be customized via `OpenAnimationReplacer-RaySense.ini`.
   - `fFurnitureExitCooldown`: Time (seconds) to pause sensors after exiting furniture (prevents glitchy reads).
   - `fObstacleWalkDistance`: Raycast distance for obstacle detection while walking.
   - `fObstacleSprintDistance`: Raycast distance for obstacle detection while sprinting.
-  - `bEnableJumpBonus`: Enable/disable automatic jump height boost when facing an obstacle.
-  - `fJumpBonus`: Amount of extra jump height added if `bEnableJumpBonus` is true.
+  - `bEnableJumpBonus`: Enable/disable jump height adjustment when facing an obstacle.
+  - `fJumpBonus`: Amount of jump height added if `bEnableJumpBonus` is true.
 
 ---
 
@@ -215,8 +215,8 @@ OAR UI 및 `config.json`에서 아래 컨디션들을 사용할 수 있습니다
   - `fFurnitureExitCooldown`: 의자/침대에서 일어난 직후 센서 오작동 방지를 위한 일시 정지 시간(초)
   - `fObstacleWalkDistance`: 걷기 상태에서 장애물을 감지하는 레이캐스트 거리
   - `fObstacleSprintDistance`: 질주(Sprint) 상태에서 장애물을 감지하는 레이캐스트 거리
-  - `bEnableJumpBonus`: 장애물 앞 점프 시 자동으로 높이 보너스 적용 여부
-  - `fJumpBonus`: 장애물 점프 시 추가되는 점프 높이 값
+  - `bEnableJumpBonus`: 장애물 앞 점프 시 점프 높이 보정 적용 여부
+  - `fJumpBonus`: 장애물 점프 시 점프 높이 보정값
 
 ---
 
