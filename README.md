@@ -1,14 +1,14 @@
 # Open Animation Replacer - RaySense (Consolidated Edition)
 
-**RaySense** is an advanced SKSE plugin designed to extend the capabilities of the Open Animation Replacer (OAR). It utilizes real-time Havok raycasting to detect verticality, slopes, obstacles, and surface types.
+**RaySense** is an SKSE plugin designed to extend the capabilities of the Open Animation Replacer (OAR). It utilizes real-time Havok raycasting to detect verticality, slopes, obstacles, and surface types.
 
 ---
 
 ## Core Features
 
 ### 1. Stair & Terrain Smoothing
-- Beyond simple raycasting, RaySense uses Differential Sensing to ensure smooth character movement on stairs.
-- It treats stairs as a **smooth ramp** rather than individual steps, allowing animations to blend naturally.
+- RaySense uses Differential Sensing to manage character movement on stairs.
+- It treats stairs as a ramp rather than individual steps to assist in animation blending.
 
 ### 2. Mid-air Velocity Prediction
 - While the player is in mid-air, the plugin predicts the **height and slope of the landing spot**.
@@ -36,7 +36,7 @@ These consolidated conditions are available in the OAR UI and `config.json`.
 
 ### 2. RaySense_Slope (Angles)
 - `Index 0` (Surface): Physical surface angle.
-- `Index 1` (Front): Macro terrain slope ahead. **(Supports uphill/downhill smoothly)**
+- `Index 1` (Front): Macro terrain slope ahead. **(Supports uphill/downhill)**
 - `Index 2` (Left): Macro terrain slope on left.
 - `Index 3` (Right): Macro terrain slope on right.
 - *Note: Steep slopes (>75°) identified as walls are automatically treated as 0.*
@@ -108,14 +108,14 @@ RaySense can be customized via `OpenAnimationReplacer-RaySense.ini`.
 ---
 
 ## Credits
-- **Ershin**: For the incredible Open Animation Replacer (OAR) and its extensible C++ API.
+- **Ershin**: For the Open Animation Replacer (OAR) and its extensible C++ API.
 - **doodlum**: For the native water detection (GetSubmergedLevel) inspiration from their work on Wade in Water.
 
 ---
 
 # 한국어 설명서 (Korean)
 
-**RaySense**는 Open Animation Replacer (OAR)의 기능을 확장하기 위해 설계된 고급 SKSE 플러그인입니다. 실시간 Havok 레이캐스팅을 활용하여 지형의 고도, 경사, 장애물 및 표면 재질을 감지합니다.
+**RaySense**는 Open Animation Replacer (OAR)의 기능을 확장하기 위해 설계된 SKSE 플러그인입니다. 실시간 Havok 레이캐스팅을 활용하여 지형의 고도, 경사, 장애물 및 표면 재질을 감지합니다.
 
 ---
 
@@ -126,8 +126,8 @@ UI 최적화를 위해 수십 개의 컨디션을 4가지 핵심 카테고리로
 ## 핵심 기능 (Core Features)
 
 ### 1. 지형 평활화 및 계단 감지
-- 단순한 레이캐스트를 넘어 계단이나 복잡한 오브젝트 위에서도 캐릭터가 부드럽게 움직일 수 있도록 **차분 센싱** 기술을 사용합니다.
-- 계단을 개별 턱이 아닌 **부드러운 경사면(Ramp)**으로 인식하여 애니메이션이 끊기지 않도록 돕습니다.
+- 계단이나 복잡한 오브젝트 위에서의 캐릭터 움직임을 위해 **차분 센싱** 기술을 사용합니다.
+- 계단을 개별 턱이 아닌 **경사면(Ramp)**으로 인식하여 애니메이션 블렌딩을 돕습니다.
 
 ### 2. 체공 중 위치 예측
 - 플레이어가 공중에 있을 때 현재 속도와 방향을 계산하여 **착지 예정 지점의 높이와 경사**를 예측합니다.
@@ -137,7 +137,7 @@ UI 최적화를 위해 수십 개의 컨디션을 4가지 핵심 카테고리로
 - 전방에 낮은 장애물이 감지된 상태에서 점프할 경우 `fJumpHeightMin` 값을 실시간으로 보정하여 **추가 점프 높이**를 제공합니다.
 
 ### 4. 스마트 캐싱 (최적화)
-- 플레이어가 정지해 있을 때 불필요한 연산을 중단하여 성능 부하를 최소화합니다.
+- 플레이어가 정지해 있을 때 불필요한 연산을 중단하여 성능 부하를 줄입니다.
 
 ---
 
@@ -153,7 +153,7 @@ OAR UI 및 `config.json`에서 아래 컨디션들을 사용할 수 있습니다
 
 ### 2. RaySense_Slope (경사도)
 - `Index 0 (Surface)`: 현재 서 있는 지면의 물리 각도
-- `Index 1 (Front)`: 전방 지형의 거시적 경사 (**오르막/내리막 완벽 지원**)
+- `Index 1` (Front): 전방 지형의 거시적 경사 (**오르막/내리막 지원**)
 - `Index 2: Left` / `Index 3: Right`: 좌/우측 거시 경사
 - *참고: 벽으로 판정되는 75도 이상의 급경사는 자동으로 0으로 처리됩니다.*
 
@@ -221,5 +221,5 @@ OAR UI 및 `config.json`에서 아래 컨디션들을 사용할 수 있습니다
 ---
 
 ## 크레딧 (Credits)
-- **Ershin**: For the incredible Open Animation Replacer (OAR) and its extensible C++ API.
+- **Ershin**: For the Open Animation Replacer (OAR) and its extensible C++ API.
 - **doodlum**: For the native water detection (GetSubmergedLevel) inspiration from their work on Wade in Water.
